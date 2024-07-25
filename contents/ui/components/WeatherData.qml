@@ -222,7 +222,7 @@ Item {
   Timer {
     id: weatherupdate
     interval: 900000
-    running: false
+    running: true
     repeat: true
     onTriggered: {
       updateWeather(1);
@@ -231,14 +231,16 @@ Item {
 
   Timer {
     id: forecastTimer
-    interval: 3.6e+6
+    interval:  8.64e+7-((new Date().getHours()*60*60*1000)+(new Date().getMinutes()*60*1000)+(new Date().getSeconds()*1000)+new Date().getMilliseconds())
     running: true
     repeat: true
     onTriggered: {
       getForecastWeather();
+      forecastTimer.timer = 8.64e+7
     }
   }
 
   onObserverCoordenatesChanged: updateWeather(2)
+  onForecastWeatherChanged:  dataChanged()
 }
 

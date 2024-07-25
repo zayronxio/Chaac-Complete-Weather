@@ -382,15 +382,5 @@ ColumnLayout {
                 }
             }
         }
-        Timer {
-            id: updateTimer
-            interval: 8.64e+7-((new Date().getHours()*60*60*1000)+(new Date().getMinutes()*60*1000)+(new Date().getSeconds()*1000)+new Date().getMilliseconds())
-            repeat: true
-            running: true
-            onTriggered: {
-                updateForecastModel();
-                updateTimer.interval = 8.64e+7-((new Date().getHours()*60*60*1000)+(new Date().getMinutes()*60*1000)+(new Date().getSeconds()*1000)+new Date().getMilliseconds())
-            }
-        }
     }
 }
