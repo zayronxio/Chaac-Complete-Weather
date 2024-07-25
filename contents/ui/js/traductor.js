@@ -366,11 +366,13 @@ function weatherShortText(languageCode, code) {
         }
     };
 
-    if (descriptions[languageCode]) {
-        return descriptions[languageCode][code] || "Unknown";
+    // Check if the provided language code exists in the descriptions object
+    if (descriptions.hasOwnProperty(languageCode)) {
+        return descriptions[languageCode][code] || "Unk";
     } else {
-        return "Language not supported";
+        return descriptions['en'][code] || "Unk"; // Default to English if language code not found
     }
+
 }
 
 function weatherLongText(languageCode, code) {
@@ -658,17 +660,18 @@ function weatherLongText(languageCode, code) {
         // Agrega más idiomas aquí según sea necesario
     };
 
-    if (descriptions[languageCode]) {
-        return descriptions[languageCode][code] || "Unknown";
+    // Check if the provided language code exists in the descriptions object
+    if (descriptions.hasOwnProperty(languageCode)) {
+        return descriptions[languageCode][code] || "Unknown weather condition";
     } else {
-        return "Language not supported";
+        return descriptions['en'][code] || "Unknown weather condition"; // Default to English if language code not found
     }
 }
 function rainProbabilityText(languageCode) {
     const translations = {
         es: "Probabilidad de lluvia",         // Spanish
-        "en": "Probability of rain",            // English
-        "hi": "बारिश की संभावना",            // Hindi
+        en: "Probability of rain",            // English
+        hi: "बारिश की संभावना",            // Hindi
         "fr": "Probabilité de pluie",             // French
         "de": "Regenwahrscheinlichkeit",       // German
         "it": "Probabilità di pioggia",          // Italian
@@ -780,11 +783,11 @@ function lavelUV(languageCode, lavel) {
         }
     };
 
-    // Return the translation for the language code or default to English if not found
-    if (translations[languageCode]) {
+    // Check if the provided language code exists in the descriptions object
+    if (translations.hasOwnProperty(languageCode)) {
         return translations[languageCode][lavel] || "Unknown";
     } else {
-        return "Language not supported";
+        return translations['en'][lavel] || "Unknown"; // Default to English if language code not found
     }
 }
 
@@ -850,5 +853,9 @@ function uvRadiationText(languageCode) {
     };
 
     // Return the translation for the language code or default to "UV" if not found
-    return translations[languageCode] || "UV";
+    if (translations.hasOwnProperty(languageCode)) {
+        return translations[languageCode] || "Unknown";
+    } else {
+        return translations['en'] || "Unknown"; // Default to English if language code not found
+    }
 }
