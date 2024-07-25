@@ -16,7 +16,7 @@ RowLayout {
     property string undefanchors: activeweathershottext ? undefined : parent.verticalCenter
     property int heightroot: 50
     property bool activeweathershottext: heightroot > 37 ? true : false
-    property int fonssizes:  sizeFontConfg === "0" ? activeweathershottext ? heightroot/1.7 : heightroot*1 : sizeFontConfg === "1" ? activeweathershottext ? heightroot/2.2 : heightroot/1.4 : activeweathershottext ? heightroot/3.8 : heightroot/2.2
+    property int fonssizes: Plasmoid.configuration.sizeFontConfig
 
     Components.WeatherData {
         id: weatherData
@@ -38,19 +38,21 @@ RowLayout {
 
         Kirigami.Icon {
             id: icon
-            width: heightroot
+            width: heightroot < 24 ? 22 : 24
             height: width
             source: weatherData.iconWeatherCurrent
+            anchors.verticalCenter: parent.verticalCenter
             roundToIconSize: false
         }
         Column {
             id: columntemandweathertext
             width: shortweathertext.implicitWidth < temOfCo.width ? temOfCo.width : shortweathertext.implicitWidth
-            height: heightroot
+            height: temOfCo.implicitHeight + shortweathertext.implicitHeight
+            anchors.verticalCenter: parent.verticalCenter
             Row {
                 id: temOfCo
                 width: textGrados.width + subtextGrados.width
-                height: heightroot/2
+                height: textGrados.implicitHeight
                 anchors.verticalCenter: undefanchors
 
                 Label {
@@ -71,14 +73,15 @@ RowLayout {
                 }
             }
             Item {
-                height: heightroot/2
+                height: shortweathertext.implicitHeight
                 width: shortweathertext.implicitWidth
                 z: 2
                 Label {
                     id: shortweathertext
                     text: weatherData.weatherShottext
-                    font.pixelSize: heightroot*.38
-                    visible: activeweathershottext ? true : false
+                    font.pixelSize: fonssizes
+                    font.bold: true
+                    visible: true
                     verticalAlignment: Text.AlignvCenter
                 }
             }

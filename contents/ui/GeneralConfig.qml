@@ -110,9 +110,18 @@ Item {
                 valueRole: "value"
                 id: valueForSizeFont
                 model: [
-                    {text: i18n("Big"), value: 0},
-                    {text: i18n("Medium"), value: 1},
-                    {text: i18n("small"), value: 3},
+                    {text: i18n("8"), value: 8},
+                    {text: i18n("9"), value: 9},
+                    {text: i18n("10"), value: 10},
+                    {text: i18n("11"), value: 11},
+                    {text: i18n("12"), value: 12},
+                    {text: i18n("13"), value: 13},
+                    {text: i18n("14"), value: 14},
+                    {text: i18n("15"), value: 15},
+                    {text: i18n("16"), value: 16},
+                    {text: i18n("17"), value: 17},
+                    {text: i18n("18"), value: 18},
+
                 ]
                 onActivated: fontsizeValue.value = currentValue
                 Component.onCompleted: currentIndex = indexOfValue(fontsizeValue.value)
