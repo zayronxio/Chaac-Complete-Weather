@@ -51,7 +51,7 @@ Item {
   property int fiveMax: fahrenheit(obtener(forecastWeather, 12))
   property int sixMax: fahrenheit(obtener(forecastWeather, 13))
   property int sevenMax: fahrenheit(obtener(forecastWeather, 14))
-  property int oneMin: fahrenheit(obtener(forecastWeather, 14))
+  property int oneMin: fahrenheit(obtener(forecastWeather, 15))
   property int twoMin: fahrenheit(obtener(forecastWeather, 16))
   property int threeMin: fahrenheit(obtener(forecastWeather, 17))
   property int fourMin: fahrenheit(obtener(forecastWeather, 18))
