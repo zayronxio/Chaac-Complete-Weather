@@ -92,7 +92,9 @@ Item {
 
   property string uvtext: Traduc.uvRadiationText(codeleng)
   property string windSpeedText: Traduc.windSpeedText(codeleng)
+  property int isDay: obtener(datosweather, 8)
   property string city: ""
+  property string prefixIcon: isDay === 1 ? "" : "-night"
 
   Component.onCompleted: {
     updateWeather(2);
@@ -178,23 +180,9 @@ Item {
       96: "storm",
       99: "storm",
     };
-    var cicloOfDay = isday();
     var iconName = "weather-" + (wmocodes[x] || "unknown");
-    var iconNamePresicion = cicloOfDay === "day" ? iconName : iconName + "-" + cicloOfDay;
+    var iconNamePresicion = iconName + prefixIcon
     return b === "preciso" ? iconNamePresicion : iconName;
-  }
-
-  function isday() {
-    var timeActual = Number(Qt.formatDateTime(new Date(), "h"));
-    if (timeActual < 6) {
-      if (timeActual > 19) {
-        return "night";
-      } else {
-        return "day";
-      }
-    } else {
-      return "day";
-    }
   }
 
   function updateWeather(x) {
