@@ -25,6 +25,7 @@ Item {
     property alias cfg_longitudeC: longitude.text
     property alias cfg_useCoordinatesIp: autamateCoorde.checked
     property alias cfg_boldfonts: boldfont.checked
+    property alias cfg_textweather: textweather.checked
 
     ColumnLayout {
         spacing: units.smallSpacing * 2
@@ -34,6 +35,13 @@ Item {
             CheckBox {
                 id: boldfont
                 text: i18n('bold font')
+                Layout.columnSpan: 2
+            }
+        }
+        RowLayout {
+            CheckBox {
+                id: textweather
+                text: "Display weather conditions text on panel (only visible on horizontal panels wider than 44px"
                 Layout.columnSpan: 2
             }
         }

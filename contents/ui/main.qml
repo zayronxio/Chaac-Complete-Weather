@@ -19,7 +19,7 @@ PlasmoidItem {
 
 
   compactRepresentation: CompactRepresentation {
-    heightroot: root.height
+
   }
           fullRepresentation: FullRepresentation {
           }
